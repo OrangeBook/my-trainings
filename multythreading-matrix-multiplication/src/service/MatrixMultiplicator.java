@@ -13,6 +13,11 @@ public class MatrixMultiplicator {
   private final int availableThreads = Runtime.getRuntime().availableProcessors();
   private final ExecutorService executorService = Executors.newFixedThreadPool(availableThreads);
 
+  public int[][] sequentialMultiply(Matrix leftMatrix, Matrix rightMatrix) {
+    //TODO
+    return null;
+  }
+
   public int[][] multiply(Matrix leftMatrix, Matrix rightMatrix)
       throws InterruptedException, ExecutionException {
 
@@ -21,6 +26,7 @@ public class MatrixMultiplicator {
     }
     CountDownLatch latch = new CountDownLatch(leftMatrix.getRows() * rightMatrix.getColumns());
     Element[][] resultMatrix = new Element[leftMatrix.getRows()][rightMatrix.getColumns()];
+    long start = System.nanoTime();
     for(int i = 0; i < leftMatrix.getRows(); i++) {
       for(int j =0; j < rightMatrix.getColumns(); j++) {
         int[] row = new int[leftMatrix.getColumns()];
@@ -47,7 +53,8 @@ public class MatrixMultiplicator {
     }
     executorService.shutdown();
     latch.await();
-
+    long finish = System.nanoTime();
+    System.out.println("time consumed: " + (finish - start) / 1_000_000_000f + " seconds");
     int result[][] = new int[leftMatrix.getRows()][rightMatrix.getColumns()];
     for(int i = 0; i < leftMatrix.getRows(); i++) {
       for(int j =0; j < rightMatrix.getColumns(); j++) {

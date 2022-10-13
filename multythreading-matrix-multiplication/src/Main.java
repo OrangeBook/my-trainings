@@ -7,9 +7,9 @@ public class Main {
   public static void main(String[] args) throws ExecutionException, InterruptedException {
     MatrixMultiplicator multiplicator = new MatrixMultiplicator();
     System.out.println("Number of processors " + Runtime.getRuntime().availableProcessors());
-    int[][] valuesForLeftMatrix = {{5, 2, 3}, {3, 4, 3}, {3, 4, 5}, {3, 4, 5}};
+    int[][] valuesForLeftMatrix = {{5, 2, 3}, {3, 4, 3}, {3, 4, 5}, {3, 4, 5}, {5, 2, 3}, {3, 4, 3}, {3, 4, 5}, {3, 4, 5}};
 
-    int[][] valuesForRightMatrix = {{1, 2, 3, 3}, {3, 4, 3, 4}, {3, 4, 5, 2}};
+    int[][] valuesForRightMatrix = {{1, 2, 3, 4, 3, 5, 3, 5}, {1, 2, 3, 4, 3, 5, 3, 5}, {1, 2, 3, 4, 3, 5, 3, 5}};
 
     Matrix leftMatrix = new Matrix(valuesForLeftMatrix.length,valuesForLeftMatrix[0].length);
     leftMatrix.setValues(valuesForLeftMatrix);
