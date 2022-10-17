@@ -1,14 +1,20 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.ForkJoinPool;
 
 public class Main {
 
   public static void main(String[] args) {
-    int[] array = generateArray(20 );
+    int length = 10_000_000;
+    int[] array = generateArray(length);
+    long start = System.nanoTime();
     int[] sortedArray = sort(array);
-    for(int i = 0; i < sortedArray.length; i++) {
-      System.out.println(sortedArray[i]);
-    }
+    long finish = System.nanoTime();
+//    for(int i = 0; i < sortedArray.length; i++) {
+//      System.out.print(sortedArray[i] + " ");
+//    }
+    System.out.println("Array length: " + length);
+    System.out.println("time spent: " + (finish - start)/ 1_000_000_000f + " seconds");
   }
 
   private static int[] generateArray(int length) {
@@ -60,5 +66,10 @@ public class Main {
     }
 
     return sortedArray;
+  }
+
+  public static int[] parallelSort(int[] array) {
+    ForkJoinPool forkJoinPool = new ForkJoinPool();
+    return null;
   }
 }
