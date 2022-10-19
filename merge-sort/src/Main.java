@@ -5,16 +5,30 @@ import java.util.concurrent.ForkJoinPool;
 public class Main {
 
   public static void main(String[] args) {
-    int length = 10_000_000;
+    int length = 100_000_000;
     int[] array = generateArray(length);
     long start = System.nanoTime();
     int[] sortedArray = sort(array);
     long finish = System.nanoTime();
-//    for(int i = 0; i < sortedArray.length; i++) {
-//      System.out.print(sortedArray[i] + " ");
-//    }
     System.out.println("Array length: " + length);
-    System.out.println("time spent: " + (finish - start)/ 1_000_000_000f + " seconds");
+    float sequantialTime = (finish - start)/ 1_000_000_000f;
+    System.out.println("time spent for sequential calculation: " + sequantialTime + " seconds");
+
+    long start1 = System.nanoTime();
+    int[] parallelSortedArray = parallelSort(array);
+    long finish1 = System.nanoTime();
+
+    float parallelTime = (finish1 - start1)/ 1_000_000_000f;
+    System.out.println("time spent for parallel calculation: " + parallelTime + " seconds");
+
+    boolean isEqual = Arrays.equals(sortedArray, parallelSortedArray);
+
+    System.out.println("Arrays are equal: " + isEqual);
+
+    System.out.println("Speed Up: " + sequantialTime / parallelTime);
+
+    System.out.println("Efficiency: " + sequantialTime / parallelTime / Runtime.getRuntime().availableProcessors() * 100 * 2 + " %");
+
   }
 
   private static int[] generateArray(int length) {
@@ -70,6 +84,8 @@ public class Main {
 
   public static int[] parallelSort(int[] array) {
     ForkJoinPool forkJoinPool = new ForkJoinPool();
-    return null;
+    Sorter sorter = new Sorter(array);
+
+    return forkJoinPool.invoke(sorter);
   }
 }
