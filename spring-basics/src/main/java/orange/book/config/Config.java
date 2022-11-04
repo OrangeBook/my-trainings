@@ -2,17 +2,21 @@ package orange.book.config;
 
 import orange.book.model.CarService;
 import orange.book.model.Owner;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
+@PropertySource("classpath:application.properties")
 public class Config {
+
+  @Value("${owner.surname}")//1 - from idea env vars, 2 - from real env vars, 3 - from application.properties
+  private String surname;
 
   @Bean
   public Owner owner() {
-    return new Owner();
+    return new Owner(surname);
   }
 
   @Bean

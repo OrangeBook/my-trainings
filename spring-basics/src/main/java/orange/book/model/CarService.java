@@ -12,7 +12,7 @@ public class CarService {
   }
 
   public void sayNameOfTheOwner() {
-    System.out.println(owner.getName());
+    System.out.println(owner.getName() + " " + owner.getSurname());
   }
 
 }
