@@ -1,7 +1,7 @@
-package orange.book.config;
+package orange.book.environmenttest.config;
 
-import orange.book.model.CarService;
-import orange.book.model.Owner;
+import orange.book.environmenttest.model.CarService;
+import orange.book.environmenttest.model.Owner;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

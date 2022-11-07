@@ -1,4 +1,4 @@
-package orange.book.model;
+package orange.book.environmenttest.model;
 
 public class CarService {
 

@@ -1,4 +1,4 @@
-package orange.book.model;
+package orange.book.environmenttest.model;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
