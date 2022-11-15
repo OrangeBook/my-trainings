@@ -6,7 +6,8 @@ import orange.book.lifecycle.practice.annotation.InjectFromProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Car {
+@EnableLogging
+public class Car implements Vehicle {
 
   @InjectFromProperties("&wheals&")
   private int wheals;
@@ -16,7 +17,7 @@ public class Car {
     System.out.println("I am starting the engine");
   }
 
-  @EnableLogging
+  @Override
   public void go() {
     System.out.println("Car has " + wheals + " wheals");
   }
