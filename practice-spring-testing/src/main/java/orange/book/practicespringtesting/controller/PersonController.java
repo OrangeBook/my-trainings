@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PersonController {
@@ -17,8 +18,14 @@ public class PersonController {
     this.personService = personService;
   }
 
+  @ResponseBody
   @GetMapping("/persons")
-  public String getPersons(@RequestParam String name, Model model) {
+  public List<Person> getPersons() {
+    return personService.getAllPersons();
+  }
+
+  @GetMapping("/")
+  public String index(@RequestParam String name, Model model) {
     List<Person> persons = personService.getAllPersons();
     model.addAttribute("persons", persons);
     return "index";
