@@ -3,24 +3,19 @@
   <title>Tools</title>
 </head>
 
-<form action="/persons?name=bob">
-  <label for="names">Choose a name:</label>
-  <select name="names" id="names">
+<form id="mainForm" action="/isYourBirthday">
+  <label for="names">Choose your name:</label>
+  <select name="name" id="names">
+    <option value="" selected disabled hidden>Choose here</option>
     <#list persons as person>
       <option value="${person.getName()}">${person.getName()}</option>
     </#list>
   </select>
   <br>
-  <input type="submit" value="Submit" onclick="SetData()">
+  <input type="submit" value="Is today my birthday?">
 </form>
+    <label>${message!""}</label>
 
-    <script>
-     function SetData(){
-     var select = document.getElementsByName('names')[0].value;
-     var parameter = select.options[select.selectedIndex].value
-     document.forms[0].action = "/persons?name=" + parameter;
-     document.forms[0].submit();
-     }
-    </script>
+
 </body>
 </html>

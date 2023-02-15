@@ -1,5 +1,6 @@
 package orange.book.practicespringtesting.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import orange.book.practicespringtesting.model.Person;
 import orange.book.practicespringtesting.service.PersonService;
@@ -25,7 +26,22 @@ public class PersonController {
   }
 
   @GetMapping("/")
-  public String index(@RequestParam String name, Model model) {
+  public String index(Model model) {
+    List<Person> persons = personService.getAllPersons();
+    model.addAttribute("persons", persons);
+    return "index";
+  }
+
+  @GetMapping("/isYourBirthday")
+  public String isYourBirthday(@RequestParam(required = false) String name, Model model) {
+    String message = "Today is not your day";
+    if(name != null) {
+      if (personService.getPerson(name).getBirthday().equals(LocalDate.now())) {
+        message = "Congratulations, Happy birthday";
+      }
+      model.addAttribute("message", message);
+    }
+
     List<Person> persons = personService.getAllPersons();
     model.addAttribute("persons", persons);
     return "index";

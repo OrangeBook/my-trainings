@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 public class PersonService {
 
   private List<Person> persons =
-      List.of(new Person("Yurs", LocalDate.of(2023,4, 22)),
-          new Person("Mama", LocalDate.of(1991,11, 18)),
-          new Person("Tato", LocalDate.of(1989,8, 18)));
+      List.of(new Person("Yurs", LocalDate.of(2023,2, 15)),
+          new Person("Mama", LocalDate.of(2022,4, 18)),
+          new Person("Tato", LocalDate.of(2022,4, 18)));
 
 
   PersonRepository personRepository;
