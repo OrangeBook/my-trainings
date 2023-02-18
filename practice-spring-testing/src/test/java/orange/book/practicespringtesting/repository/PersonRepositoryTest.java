@@ -2,20 +2,22 @@ package orange.book.practicespringtesting.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import orange.book.practicespringtesting.model.Person;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
+//@AutoConfigureTestDatabase(replace = Replace.NONE)
 
 public class PersonRepositoryTest {
 
@@ -32,14 +34,12 @@ public class PersonRepositoryTest {
     testPerson.setName("test");
 
     entityManager.persist(testPerson);
+    entityManager.persist(testPerson);
 
     Person foundPerson = personRepository.findByName("test");
 
     assertEquals("test", foundPerson.getName());
   }
 
-  @Test
-  void findByName_whenBobPersonPreviouslySavedInDb_thenPersonRepositoryReturnsBobPerson() {
 
-  }
 }
