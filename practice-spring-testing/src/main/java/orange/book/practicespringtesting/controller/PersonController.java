@@ -29,7 +29,7 @@ public class PersonController {
   public String index(Model model) {
     List<Person> persons = personService.getAllPersons();
     model.addAttribute("persons", persons);
-    return "index";
+    return "myPage";
   }
 
   @GetMapping("/isYourBirthday")
@@ -44,6 +44,6 @@ public class PersonController {
 
     List<Person> persons = personService.getAllPersons();
     model.addAttribute("persons", persons);
-    return "index";
+    return "myPage";
   }
 }
