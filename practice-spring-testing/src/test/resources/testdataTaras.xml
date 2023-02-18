@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+  <person
+    id="1"
+    name="Taras"
+    birthday="2013-12-21"
+  />
+</dataset>
