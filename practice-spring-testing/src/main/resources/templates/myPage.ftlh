@@ -2,6 +2,8 @@
 <head>
   <title>Tools</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/button.css">
+
 </head>
 <body>
 
@@ -10,18 +12,18 @@
     <div class="wave"></div>
     <div class="wave"></div>
     <form id="mainForm" action="/isYourBirthday">
-      <label class="text" id="label" for="names">Choose your name:</label>
-      <select name="name" id="names">
-        <option value="" selected disabled hidden>Choose here</option>
+      <label class="select" id="label" for="names">Choose your name:</label>
+      <select name="name" id="names" class="select">
+        <option id="option" class="select" value="" selected disabled hidden>Choose here</option>
         <#list persons as person>
           <option value="${person.getName()}">${person.getName()}</option>
         </#list>
       </select>
       <br>
-      <input id="input" type="submit" value="Is today my birthday?">
+      <input class="button" id="input" type="submit" value="Is today my birthday?">
     </form>
 
-      <label class="threeD">${message!""}</label>
+      <label class="myLabel">${message!""}</label>
   </div>
 
 

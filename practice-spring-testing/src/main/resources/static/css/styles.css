@@ -4,13 +4,19 @@
   font-family: cursive;
 }
 
-#names {
+.select {
   width:10%;
   height: 10%;
   font-family: cursive;
   font-size:20;
-   border: 1px solid #fff;
+   border: transparent;
    background-color: transparent;
+}
+
+#names *
+{
+ border-radius: 15px;
+ background-color: transparent;
 }
 
 body {
@@ -108,14 +114,15 @@ body {
     1px 30px 60px rgba(16,16,16,0.4);
 }
 
-.threeD {
+.myLabel {
+  position:absolute;
   color: darkgrey;
   white-space: nowrap;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3em;
+  font-size: 1em;
   font-family: sans-serif;
   letter-spacing: 0.1em;
   transition: 0.3s;
@@ -124,7 +131,7 @@ body {
     5px 13px 15px black;
 }
 
-.threeD:hover {
+.myLabel:hover {
   transition: 0.3s;
   transform: scale(1.1)translate(-50%, -50%);
   text-shadow: 1px -1px 0 grey, 1px -2px 0 grey, 1px -3px 0 grey,

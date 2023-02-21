@@ -27,4 +27,12 @@ public class PersonService {
   public List<Person> getAllPersons() {
     return personRepository.findAll();
   }
+
+  public boolean isTodayPersonsBirthday(String personName) {
+    LocalDate birthday = getPerson(personName).getBirthday();
+    LocalDate today = LocalDate.now();
+
+    return birthday.getDayOfYear() == today.getDayOfYear();
+
+  }
 }

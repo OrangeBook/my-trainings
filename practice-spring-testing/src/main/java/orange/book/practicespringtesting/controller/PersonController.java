@@ -36,7 +36,7 @@ public class PersonController {
   public String isYourBirthday(@RequestParam(required = false) String name, Model model) {
     String message = "Today is not your day";
     if(name != null) {
-      if (personService.getPerson(name).getBirthday().equals(LocalDate.now())) {
+      if (personService.isTodayPersonsBirthday(name)) {
         message = "Congratulations, Happy birthday";
       }
       model.addAttribute("message", message);

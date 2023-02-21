@@ -35,9 +35,6 @@
     </form>
     <br>
     <label>${message!""}</label>
-
-
-
   </div>
 </body>
 </html>
