@@ -46,4 +46,10 @@ public class PersonController {
     model.addAttribute("persons", persons);
     return "myPage";
   }
+
+  @GetMapping("/test")
+  public String test() {
+    return "test";
+  }
+
 }
